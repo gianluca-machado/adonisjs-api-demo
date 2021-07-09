@@ -14,12 +14,10 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
+const Env = use('Env');
 
-Route.get('/', () => {
-  return {
-    greeting: 'Hello world in JSON',
-  };
-});
+Route.get('/', _ => Env.get('APP_NAME'));
 
 Route.post('/users', 'UserController.create');
+Route.post('/sessions', 'SessionController.create');
