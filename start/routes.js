@@ -19,5 +19,7 @@ const Env = use('Env');
 
 Route.get('/', _ => Env.get('APP_NAME'));
 
-Route.post('/users', 'UserController.create');
+Route.post('/users', 'UserController.create')
+    .validator('CreateUser');
+
 Route.post('/sessions', 'SessionController.create');

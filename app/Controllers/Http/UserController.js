@@ -1,11 +1,10 @@
 'use strict'
 
 const User = use('App/Models/User');
-const Logger = use('Logger');
 
 class UserController {
-  async create ({ request }) {
-    const data = request.only(['username', 'email', 'password']);
+  async create ({ request, response }) {
+    const data = request.only(['name', 'email', 'password']);
 
     const user = await User.create(data);
 
