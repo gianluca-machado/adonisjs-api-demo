@@ -19,7 +19,9 @@ const Env = use('Env');
 
 Route.get('/', _ => Env.get('APP_NAME'));
 
-Route.post('/users', 'UserController.create')
-    .validator('CreateUser');
+// users controller
+Route.post('/users', 'UserController.create').validator('CreateUser');
 
+// sessions controller
 Route.post('/sessions', 'SessionController.create');
+Route.post('/sessions/validate', 'SessionController.validate').middleware(['auth']);

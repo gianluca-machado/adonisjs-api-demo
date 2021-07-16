@@ -1,7 +1,7 @@
 'use strict'
 const User = use('App/Models/User');
 class SessionController {
-  async create (context) { 
+  async create(context) {
     const user = context.request.all();
 
     try {
@@ -13,6 +13,10 @@ class SessionController {
       };
       return context.response.status(400).send(body);
     }
+  }
+
+  async validate(context) {
+    return await context.auth.check();
   }
 }
 
