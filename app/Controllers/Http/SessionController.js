@@ -1,17 +1,16 @@
 'use strict'
 const User = use('App/Models/User');
+const Utils = use('App/Utils/Utils');
+const Messages = use('App/Utils/Messages');
+
 class SessionController {
   async create(context) {
-    const user = context.request.all();
-
     try {
+      const user = context.request.all();
       return await context.auth.attempt(user.email, user.password);
     } catch (error) {
-      const body = {
-        error: true,
-        message: 'api.error.message.login_failed_invalid_credentials',
-      };
-      return context.response.status(400).send(body);
+      const response = Utils.errorResponse(error.message, Messages.LOGIN_FAILED_INVALID_CREDENTIALS);
+      return context.response.badRequest(response);
     }
   }
 

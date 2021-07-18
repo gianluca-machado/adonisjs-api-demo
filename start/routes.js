@@ -20,8 +20,25 @@ const Env = use('Env');
 Route.get('/', _ => Env.get('APP_NAME'));
 
 // users controller
-Route.post('/users', 'UserController.create').validator('CreateUser');
+Route.post('/users', 'UserController.create')
+  .validator('StoreUserValidator');
+Route.get('/users/:id', 'UserController.show')
+  .middleware(['auth']);
 
 // sessions controller
 Route.post('/sessions', 'SessionController.create');
-Route.post('/sessions/validate', 'SessionController.validate').middleware(['auth']);
+Route.post('/sessions/validate', 'SessionController.validate')
+  .middleware(['auth']);
+
+// setting controller
+Route.get('/setting', 'SettingController.index')
+  .middleware(['auth']);
+Route.post('/setting', 'SettingController.create')
+  .validator(['StoreSettingValidator'])
+  .middleware(['auth']);
+Route.get('/setting/:id', 'SettingController.show')
+  .middleware(['auth']);
+Route.put('/setting/:id', 'SettingController.update')
+  .middleware(['auth', 'validateUserId:Setting']);
+Route.delete('/setting/:id', 'SettingController.destroy')
+  .middleware(['auth', 'validateUserId:Setting']);
