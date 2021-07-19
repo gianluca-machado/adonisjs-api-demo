@@ -3,11 +3,14 @@
 const User = use('App/Models/User');
 const Utils = use('App/Utils/Utils');
 const Messages = use('App/Utils/Messages');
+const Event = use('Event');
 
 class UserController {
   async create(context) {
     const data = context.request.only(['name', 'email', 'password']);
     const user = await User.create(data);
+
+    Event.fire('new::user', user);
 
     return user;
   }
