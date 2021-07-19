@@ -1,5 +1,4 @@
 'use strict'
-const Logger = use('Logger');
 const Utils = use('App/Utils/Utils');
 
 class StoreUserValidator {
@@ -19,7 +18,6 @@ class StoreUserValidator {
 
   async fails(errorMessages) {
     const error = errorMessages[0];
-    Logger.error(error);
 
     const messages = {
       email: {

@@ -10,7 +10,6 @@ class StoreSettingValidator {
 
   async fails(errorMessages) {
     const error = errorMessages[0];
-    Logger.error(error);
 
     const messages = {
       darkmode: {

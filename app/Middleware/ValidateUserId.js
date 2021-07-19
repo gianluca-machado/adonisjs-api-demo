@@ -3,7 +3,6 @@
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
-// const Logger = use('Logger');
 const Utils = use('App/Utils/Utils');
 const Messages = use('App/Utils/Messages');
 

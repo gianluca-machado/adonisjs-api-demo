@@ -6,6 +6,7 @@ class Messages {
   static USER_NOT_FOUND_EXCEPTION = 'api.error.message.user_not_found_exception';
 
   // Authorization
+  static UNAUTHORIZED = 'api.error.message.unauthorized';
   static USER_NOT_AUTHORIZED = 'api.error.message.user_not_authorized';
   static LOGIN_FAILED_INVALID_CREDENTIALS = 'api.error.message.login_failed_invalid_credentials';
 }

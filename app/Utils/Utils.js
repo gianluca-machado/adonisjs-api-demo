@@ -1,5 +1,4 @@
 'use strict'
-const Logger = use('Logger');
 
 class Utils {
   static errorResponse(error, message) {
@@ -9,7 +8,6 @@ class Utils {
       message,
     };
 
-    Logger.error("%j", response);
     return response;
   }
 

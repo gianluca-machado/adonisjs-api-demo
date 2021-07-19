@@ -1,6 +1,5 @@
 'use strict'
 
-const Logger = use('Logger');
 const Mail = use('Mail');
 const Env = use('Env');
 
