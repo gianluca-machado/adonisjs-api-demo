@@ -2,6 +2,7 @@
 
 const BaseExceptionHandler = use('BaseExceptionHandler');
 const Logger = use('Logger');
+const Env = use('Env');
 
 /**
  * This class handles all exceptions thrown during
@@ -21,7 +22,9 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
   async report(error, context) {
-    Logger.error("name=%s status=%s message=%s", error.name, error.status, error.message);
+    if (Env.get('NODE_ENV') !== 'testing') {
+      Logger.error('name=%s status=%s message=%s', error.name, error.status, error.message);
+    }
   }
 }
 

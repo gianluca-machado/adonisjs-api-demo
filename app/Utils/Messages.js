@@ -9,6 +9,13 @@ class Messages {
   static UNAUTHORIZED = 'api.error.message.unauthorized';
   static USER_NOT_AUTHORIZED = 'api.error.message.user_not_authorized';
   static LOGIN_FAILED_INVALID_CREDENTIALS = 'api.error.message.login_failed_invalid_credentials';
+
+  // validator
+  static USER_VALIDATOR_NAME_REQUIRED = 'api.error.message.name_required';
+  static USER_VALIDATOR_PASSWORD_REQUIRED = 'api.error.message.password_required';
+  static USER_VALIDATOR_EMAIL_REQUIRED = 'api.error.message.email_required';
+  static USER_VALIDATOR_EMAIL_INVALID = 'api.error.message.email_invalid';
+  static USER_VALIDATOR_EMAIL_ALREADY_EXISTS = 'api.error.message.email_already_exists';
 }
 
 module.exports = Messages;

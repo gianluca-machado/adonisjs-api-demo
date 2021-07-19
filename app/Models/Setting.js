@@ -16,6 +16,14 @@ class Setting extends Model {
     ];
   }
 
+  static get hidden() {
+    return [];
+  }
+
+  static get visible() {
+    return this.getPropertiesToUpdate();
+  }
+
 }
 
 module.exports = Setting

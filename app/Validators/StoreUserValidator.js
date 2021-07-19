@@ -1,6 +1,6 @@
 'use strict'
 const Utils = use('App/Utils/Utils');
-
+const Messages = use('App/Utils/Messages');
 class StoreUserValidator {
   get rules() {
     return {
@@ -10,31 +10,25 @@ class StoreUserValidator {
     }
   }
 
-  get sanitizationRules() {
-    return {
-      email: 'normalize_email'
-    }
-  }
-
   async fails(errorMessages) {
     const error = errorMessages[0];
 
     const messages = {
       email: {
-        required: 'api.error.message.email_required',
-        unique: 'api.error.message.email_already_exists',
-        email: 'api.error.message.email_invalid',
+        required: Messages.USER_VALIDATOR_EMAIL_REQUIRED,
+        email: Messages.USER_VALIDATOR_EMAIL_INVALID,
+        unique: Messages.USER_VALIDATOR_EMAIL_ALREADY_EXISTS,
       },
       password: {
-        required: 'api.error.message.password_required',
+        required: Messages.USER_VALIDATOR_PASSWORD_REQUIRED,
       },
       name: {
-        required: 'api.error.message.name_required',
+        required: Messages.USER_VALIDATOR_NAME_REQUIRED,
       },
     };
 
     const response = Utils.errorResponse(null, messages[error.field][error.validation]);
-    return context.response.badRequest(response);
+    return this.ctx.response.badRequest(response);
   }
 }
 

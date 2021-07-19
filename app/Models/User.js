@@ -1,7 +1,7 @@
 'use strict'
 
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
-const Model = use('Model')
+const Model = use('Model');
 
 class User extends Model {
   static boot() {
@@ -13,8 +13,6 @@ class User extends Model {
      */
     this.addHook('beforeCreate', 'UserHook.hashPassword');
     this.addHook('afterCreate', 'UserHook.createSetting');
-
-    this.addTrait('NoTimestamp');
   }
 
   /**
@@ -32,12 +30,16 @@ class User extends Model {
   }
 
   settings() {
-    return this.hasOne('App/Models/Setting')
+    return this.hasOne('App/Models/Setting');
   }
 
-  getPassword(password) {
-    return '******';
+  static get hidden() {
+    return ['password'];
+  }
+
+  static get visible() {
+    return ['id', 'name', 'email'];
   }
 }
 
-module.exports = User
+module.exports = User;

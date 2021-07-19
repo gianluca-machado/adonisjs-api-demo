@@ -21,7 +21,7 @@ class StoreSettingValidator {
     };
 
     const response = Utils.errorResponse(null, messages[error.field][error.validation]);
-    return context.response.badRequest(response);
+    return this.ctx.response.badRequest(response);
   }
 }
 
