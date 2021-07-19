@@ -42,3 +42,5 @@ Route.put('/setting/:id', 'SettingController.update')
   .middleware(['auth', 'validateUserId:Setting']);
 Route.delete('/setting/:id', 'SettingController.destroy')
   .middleware(['auth', 'validateUserId:Setting']);
+Route.get('/setting-by-user', 'SettingController.settingByUser')
+  .middleware(['auth']);

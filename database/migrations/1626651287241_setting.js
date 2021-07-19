@@ -2,11 +2,7 @@
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema');
-
-const LanguageEnum = {
-  EN: "en",
-  PT_BR: "pt-BR",
-};
+const LanguageEnum = use('App/Enumerations/LanguageEnum');
 
 class SettingSchema extends Schema {
   up() {
@@ -23,7 +19,7 @@ class SettingSchema extends Schema {
       table.boolean('darkmode')
         .defaultTo(false)
         .notNullable();
-      table.enum('language', Object.values(LanguageEnum))
+      table.enum('language', LanguageEnum.values)
         .defaultTo(LanguageEnum.EN)
         .notNullable();
       table.timestamps();
