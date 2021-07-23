@@ -1,10 +1,15 @@
 'use strict'
 const Utils = use('App/Utils/Utils');
+const Messages = use('App/Utils/Messages');
+const LanguageEnum = use('App/Enumerations/LanguageEnum');
+
 class StoreSettingValidator {
+
+  // visit https://indicative-v5.adonisjs.com/docs/syntax-guide#_nested_data
   get rules() {
     return {
-      darkmode: 'required',
-      language: 'required'
+      darkmode: 'required|boolean',
+      language: `required|in:${LanguageEnum.values}`,
     }
   }
 
@@ -13,10 +18,12 @@ class StoreSettingValidator {
 
     const messages = {
       darkmode: {
-        required: 'api.error.message.darkmode_required',
+        required: Messages.SETTING_VALIDATOR_DARKMODE_REQUIRED,
+        boolean: Messages.SETTING_VALIDATOR_DARKMODE_INVALID_BOOLEAN,
       },
       language: {
-        required: 'api.error.message.language_required',
+        required: Messages.SETTING_VALIDATOR_LANGUAGE_REQUIRED,
+        in: Messages.SETTING_VALIDATOR_LANGUAGE_INVALID_ENUM,
       },
     };
 

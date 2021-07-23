@@ -31,16 +31,8 @@ Route.post('/sessions/validate', 'SessionController.validate')
   .middleware(['auth']);
 
 // setting controller
-Route.get('/setting', 'SettingController.index')
-  .middleware(['auth']);
-Route.post('/setting', 'SettingController.create')
-  .validator(['StoreSettingValidator'])
-  .middleware(['auth']);
-Route.get('/setting/:id', 'SettingController.show')
-  .middleware(['auth']);
-Route.put('/setting/:id', 'SettingController.update')
-  .middleware(['auth', 'validateUserId:Setting']);
-Route.delete('/setting/:id', 'SettingController.destroy')
-  .middleware(['auth', 'validateUserId:Setting']);
-Route.get('/setting-by-user', 'SettingController.settingByUser')
+Route.put('/setting', 'SettingController.update')
+  .middleware(['auth'])
+  .validator('StoreSettingValidator');
+Route.get('/setting', 'SettingController.settingByUser')
   .middleware(['auth']);

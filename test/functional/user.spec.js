@@ -5,6 +5,18 @@ const User = use('App/Models/User');
 const Faker = use('faker');
 const Messages = use('App/Utils/Messages');
 
+const data = {
+  id: 0,
+  name: Faker.name.findName(),
+  email: Faker.internet.email().toLowerCase(),
+  password: Faker.internet.password(),
+  type: null,
+  token: null,
+};
+
+Suite.trait('Test/ApiClient');
+Suite.trait('Auth/Client');
+
 Suite.before(async () => {
   // executed before all the tests for a given suite
 });
@@ -20,18 +32,6 @@ Suite.after(async () => {
 Suite.afterEach(async () => {
   // executed after each test inside a given suite
 });
-
-Suite.trait('Test/ApiClient');
-Suite.trait('Auth/Client');
-
-const data = {
-  id: 0,
-  name: Faker.name.findName(),
-  email: Faker.internet.email().toLowerCase(),
-  password: Faker.internet.password(),
-  type: null,
-  token: null,
-};
 
 // create new user error -> required name
 Suite.test('create new user error -> required name', async (context) => {
@@ -58,6 +58,36 @@ Suite.test('create new user error -> required password', async (context) => {
   response.assertJSONSubset({
     error: true,
     message: Messages.USER_VALIDATOR_PASSWORD_REQUIRED,
+  });
+});
+
+// create new user error -> required min password
+Suite.test('create new user error -> required min password', async (context) => {
+  const response = await context.client.post('/users')
+    .field('name', data.name)
+    .field('password', '12345')
+    .field('email', data.email)
+    .end();
+
+  response.assertStatus(400);
+  response.assertJSONSubset({
+    error: true,
+    message: Messages.USER_VALIDATOR_PASSWORD_MIN,
+  });
+});
+
+// create new user error -> required max password
+Suite.test('create new user error -> required max password', async (context) => {
+  const response = await context.client.post('/users')
+    .field('name', data.name)
+    .field('password', '1234567891234567891234567891234')
+    .field('email', data.email)
+    .end();
+
+  response.assertStatus(400);
+  response.assertJSONSubset({
+    error: true,
+    message: Messages.USER_VALIDATOR_PASSWORD_MAX,
   });
 });
 
@@ -216,6 +246,10 @@ Suite.test('get user by id -> valid', async (context) => {
     id: data.id,
     name: data.name,
     email: data.email,
+    settings: {
+      darkmode: 0,
+      language: 'en',
+    }
   });
 });
 

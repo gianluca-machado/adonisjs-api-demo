@@ -24,6 +24,10 @@ class Setting extends Model {
     return this.getPropertiesToUpdate();
   }
 
+  getDarkmode(value) {
+    return value ? 1 : 0;
+  }
+
 }
 
 module.exports = Setting
