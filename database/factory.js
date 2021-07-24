@@ -16,6 +16,8 @@
 
 // Factory.blueprint('App/Models/User', (faker) => {
 //   return {
-//     username: faker.username()
+//     email: 'admin@admin.com.br',
+//     password: '123456',
+//     name: 'Gianluca Maziero Machado'
 //   }
 // })

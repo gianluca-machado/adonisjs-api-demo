@@ -8,7 +8,12 @@
     "start": "node server.js",
     "test": "adonis test",
     "serve:dev": "adonis serve --dev",
-    "migration": "adonis migration:run"
+    "migration": "adonis migration:run",
+    "rollback": "adonis migration:rollback",
+    "refresh": "adonis migration:refresh && npm run seed",
+    "reset": "adonis migration:reset",
+    "status": "adonis migration:status",
+    "seed": "adonis seed"
   },
   "keywords": [
     "adonisjs",
