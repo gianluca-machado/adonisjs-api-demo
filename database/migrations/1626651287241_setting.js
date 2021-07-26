@@ -8,8 +8,7 @@ class SettingSchema extends Schema {
   up() {
     this.create('settings', (table) => {
       table.increments();
-      table
-        .integer('user_id')
+      table.integer('user_id')
         .unsigned()
         .unique()
         .references('id')
@@ -23,7 +22,7 @@ class SettingSchema extends Schema {
         .defaultTo(LanguageEnum.EN)
         .notNullable();
       table.timestamps();
-    })
+    });
   }
 
   down() {

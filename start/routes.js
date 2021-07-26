@@ -36,3 +36,7 @@ Route.put('/setting', 'SettingController.update')
   .validator('StoreSettingValidator');
 Route.get('/setting', 'SettingController.settingByUser')
   .middleware(['auth']);
+
+// menu controller
+Route.get('/menu', 'MenuController.all')
+  .middleware(['auth']);
