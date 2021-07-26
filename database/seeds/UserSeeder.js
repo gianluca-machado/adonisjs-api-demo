@@ -13,19 +13,11 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory');
 const User = use('App/Models/User');
+const users = use('App/Constants/Users').users;
 
 class UserSeeder {
   async run() {
-    await this.createAdmin();
-  }
-
-  createAdmin() {
-    const admin = {
-      email: 'admin@admin.com.br',
-      password: '123456',
-      name: 'Gianluca Maziero Machado',
-    };
-    return User.create(admin);
+    await User.createMany(users);
   }
 }
 
