@@ -253,6 +253,20 @@ Suite.test('get user by id -> valid', async (context) => {
   });
 });
 
+// get user by auth -> valid
+Suite.test('get user by auth -> valid', async (context) => {
+  const response = await context.client.get(`/users`)
+    .header('Authorization', `${data.type} ${data.token}`)
+    .end();
+
+  response.assertStatus(200);
+  response.assertJSONSubset({
+    id: data.id,
+    name: data.name,
+    email: data.email,
+  });
+});
+
 // get user by id -> invalid
 Suite.test('get user by id -> invalid', async (context) => {
   const response = await context.client.get(`/users/${Faker.datatype.number()}`)

@@ -26,6 +26,10 @@ class UserController {
       return context.response.badRequest(response);
     }
   }
+
+  async getByAuth(context) {
+    return await context.auth.getUser();
+  }
 }
 
 module.exports = UserController;

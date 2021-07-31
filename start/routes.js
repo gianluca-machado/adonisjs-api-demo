@@ -24,6 +24,8 @@ Route.post('/users', 'UserController.create')
   .validator('StoreUserValidator');
 Route.get('/users/:id', 'UserController.show')
   .middleware(['auth']);
+Route.get('/users', 'UserController.getByAuth')
+  .middleware(['auth']);
 
 // sessions controller
 Route.post('/sessions', 'SessionController.create');
