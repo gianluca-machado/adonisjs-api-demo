@@ -7,8 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "adonis test",
-    "serve:dev": "adonis serve --dev",
-    "migration": "adonis migration:run",
+    "serve:dev": "npm run test && adonis serve --dev",
+    "migration": "adonis migration:run && npm run seed",
     "rollback": "adonis migration:rollback",
     "refresh": "adonis migration:refresh && npm run seed",
     "reset": "adonis migration:reset",

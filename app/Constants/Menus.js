@@ -9,18 +9,25 @@ const menus = [{
     order: 1,
   },
   {
+    route: '/menu/connections',
+    title: 'menu.item.connections',
+    icon_type: IconTypeEnum.DESKTOP,
+    icon_theme: IconThemeEnum.OUTLINE,
+    order: 2,
+  },
+  {
     route: '/menu/setting',
     title: 'menu.item.settings',
     icon_type: IconTypeEnum.SETTING,
     icon_theme: IconThemeEnum.OUTLINE,
-    order: 2,
+    order: 3,
   },
   {
     route: '/login',
     title: 'menu.item.logout',
     icon_type: IconTypeEnum.LOGOUT,
     icon_theme: IconThemeEnum.OUTLINE,
-    order: 3,
+    order: 1000,
   },
 ];
 
