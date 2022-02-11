@@ -2,10 +2,10 @@
 
 class LanguageEnum {
   static get EN() {
-    return 'en';
+    return 'EN';
   }
   static get PT_BR() {
-    return 'pt-BR';
+    return 'PT-BR';
   }
   static get values() {
     const objects = {

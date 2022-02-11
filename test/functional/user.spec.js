@@ -4,6 +4,7 @@ const Suite = use('Test/Suite')('User registration');
 const User = use('App/Models/User');
 const Faker = use('faker');
 const Messages = use('App/Utils/Messages');
+const LanguageEnum = use('App/Enumerations/LanguageEnum');
 
 const data = {
   id: 0,
@@ -248,7 +249,7 @@ Suite.test('get user by id -> valid', async (context) => {
     email: data.email,
     settings: {
       darkmode: 0,
-      language: 'en',
+      language: LanguageEnum.EN,
     }
   });
 });
